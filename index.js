@@ -1,6 +1,7 @@
 const 
     express=require('express'),
     app = express();
+    cors = require('cors')
     morgan=require('morgan'), 
     cookieParser = require("cookie-parser"),
     cookieSession = require("cookie-session"),
@@ -18,6 +19,8 @@ app.use(cookieSession({ secret:"realitygem", resave: false, saveUninitialized: f
 app.use(express.static("./public"));  
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(cors());
 
 //route controllers
 const authRoutes = require('./routes/auth'),
