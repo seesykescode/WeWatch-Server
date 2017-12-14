@@ -20,8 +20,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //route controllers
-const authRoutes = require('./routes/auth')
-const streamRoutes = require('./routes/user')
+const authRoutes = require('./routes/auth'),
+      streamRoutes = require('./routes/stream'),
+      userRoutes = require('./routes/user')
 
 
 //routes
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
 
 app.use('/auth', authRoutes)
 app.use('/streams', streamRoutes)
+app.use('/user', userRoutes)
 
 
 
