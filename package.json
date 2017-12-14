@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "the server for my Twitch viewer project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seesykescode/WeWatch-Server.git"
+  },
+  "author": "Johnathon Sykes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seesykescode/WeWatch-Server/issues"
+  },
+  "homepage": "https://github.com/seesykescode/WeWatch-Server#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-twitch": "^1.0.3",
+    "twitch-api-v5": "^2.0.2"
+  }
+}
