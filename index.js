@@ -7,7 +7,7 @@ const
     bodyParser = require('body-parser'),
     passport = require("passport"),
     twitchStrategy = require("passport-twitch").Strategy,
-    port = 3000 || process.env.PORT
+    port = process.env.PORT || 3001
 
     // session configuration and middleware
 require('dotenv').config()
