@@ -9,7 +9,7 @@ const
     passport.use(new twitchStrategy({
         clientID: process.env.TWITCH_CLIENT_ID,
         clientSecret: process.env.TWITCH_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/callback",
+        callbackURL: "https://we-watch-twitch-server.herokuapp.com/auth/callback",
         scope: "user_read"
     },
         function (accessToken, refreshToken, profile, done) {
