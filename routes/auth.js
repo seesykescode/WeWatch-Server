@@ -37,6 +37,7 @@ router.get("/callback", passport.authenticate("twitch", {
     failureRedirect: "/",
     successRedirect: "/"
 }), (req, res) => {
+    res.json("you're logged in now? I think")
 });
 
 router.get('/logout', (req, res) => {
