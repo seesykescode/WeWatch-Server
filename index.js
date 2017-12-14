@@ -24,7 +24,6 @@ app.use(passport.session());
 
 //route controllers
 const authRoutes = require('./routes/auth'),
-      streamRoutes = require('./routes/stream'),
       userRoutes = require('./routes/user')
 
 app.use(cors());
