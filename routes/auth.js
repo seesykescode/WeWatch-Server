@@ -9,7 +9,7 @@ const
     passport.use(new twitchStrat({
         clientID: process.env.TWITCH_CLIENT_ID,
         clientSecret: process.env.TWITCH_CLIENT_SECRET,
-        callbackURL: process.env.CALLBACK_URL
+        callbackURL: process.env.CALLBACK_URL,
         "scope": "user_read"
     },
         function (accessToken, refreshToken, profile, done) {
