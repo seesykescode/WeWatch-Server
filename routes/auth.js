@@ -9,7 +9,7 @@ const
     passport.use(new twitchStrat({
         clientID: process.env.TWITCH_CLIENT_ID,
         clientSecret: process.env.TWITCH_CLIENT_SECRET,
-        callbackURL: "https://we-watch-twitch-server.herokuapp.com/auth/callback",
+        callbackURL: process.env.CALLBACK_URL
         "scope": "user_read"
     },
         function (accessToken, refreshToken, profile, done) {
@@ -35,14 +35,14 @@ router.get("/login", passport.authenticate("twitch"));
 
 router.get("/callback", passport.authenticate("twitch", {
     failureRedirect: "/fail"}), (req, res) => {
-       res.redirect('http://localhost:3000')
+       res.redirect(process.env.CALLBACK_URL)
 });  
 
 
 
 router.get('/logout', (req, res) => {
     req.logout()
-    res.redirect('http://localhost:3000')
+    res.redirect(process.env.CALLBACK_URL)
 })
 
 
