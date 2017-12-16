@@ -9,7 +9,7 @@ const
     passport.use(new twitchStrat({
         clientID: process.env.TWITCH_CLIENT_ID,
         clientSecret: process.env.TWITCH_CLIENT_SECRET,
-        callbackURL: process.env.CALLBACK_URL,
+        callbackURL: `${process.env.BASE_URL}\auth\callback`,
         "scope": "user_read"
     },
         function (accessToken, refreshToken, profile, done) {
@@ -35,14 +35,14 @@ router.get("/login", passport.authenticate("twitch"));
 
 router.get("/callback", passport.authenticate("twitch", {
     failureRedirect: "/fail"}), (req, res) => {
-       res.redirect(process.env.CALLBACK_URL)
+       res.redirect(process.env.BASE_URL)
 });  
 
 
 
 router.get('/logout', (req, res) => {
     req.logout()
-    res.redirect(process.env.CALLBACK_URL)
+    res.redirect(process.env.BASE_URL)
 })
 
 
