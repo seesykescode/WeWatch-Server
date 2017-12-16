@@ -10,21 +10,24 @@ router.get('/', (req, res) => {
     else res.json("You are not logged in. Please attempt to log-in and try again")
 })
 
-router.get('/streams', (req, res) => {
+router.get('/validate', (req, res) => {
+    const userToken = req.user.accessToken
     if (req.isAuthenticated()) {
-        api.auth.checkToken({ auth: req.user.accessToken }, (err, status) => {
-            if (status.token.valid) {
-                api.streams.followed({ auth: req.user.accessToken }, (err, streamData) => {
-                    res.json(streamData)
-                })
-            }
+        //check to make sure the user token is valid. 
+        //required by Twitch API on EVERY request to API
+        api.auth.checkToken({ auth: req.user.accessToken }, (err, tokenResponse) => {
+            res.json(tokenResponse)
         })
 
     } else {
         res.json("You are not logged in. Please attempt to log-in and try again")
     }
+})
 
-
+router.get('/streams', (req, res) => {
+    api.streams.followed({auth: req.user.accessToken}, (err, apiResponse) => {
+        res.json(apiResponse.streams)
+    })
 })
 
 

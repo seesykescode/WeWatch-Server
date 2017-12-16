@@ -2,15 +2,15 @@ const
     express = require('express'),
     router = express.Router(),
     passport = require("passport"),
-    twitchStrategy = require("passport-twitch").Strategy
+    twitchStrat = require("passport-twitch").Strategy
     
 
 // Passport configuration
-    passport.use(new twitchStrategy({
+    passport.use(new twitchStrat({
         clientID: process.env.TWITCH_CLIENT_ID,
         clientSecret: process.env.TWITCH_CLIENT_SECRET,
         callbackURL: "https://we-watch-twitch-server.herokuapp.com/auth/callback",
-        scope: "user_read"
+        "scope": "user_read"
     },
         function (accessToken, refreshToken, profile, done) {
             var userObj = {
@@ -34,15 +34,15 @@ passport.deserializeUser(function (user, done) {
 router.get("/login", passport.authenticate("twitch"));
 
 router.get("/callback", passport.authenticate("twitch", {
-    failureRedirect: "/",
-    successRedirect: "/"
-}), (req, res) => {
-    res.json("you're logged in now? I think")
-});
+    failureRedirect: "/fail"}), (req, res) => {
+       res.redirect('http://localhost:3000')
+});  
+
+
 
 router.get('/logout', (req, res) => {
     req.logout()
-    res.redirect('/')
+    res.redirect('http://localhost:3000')
 })
 
 
