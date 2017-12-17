@@ -35,7 +35,7 @@ router.get("/login", passport.authenticate("twitch"));
 
 router.get("/callback", passport.authenticate("twitch", {
     failureRedirect: "/fail"}), (req, res) => {
-       res.redirect(process.env.BASE_URL)
+       res.redirect(process.env.APP_URL)
 });  
 
 
