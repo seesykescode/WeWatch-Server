@@ -42,7 +42,6 @@ router.get("/callback", passport.authenticate("twitch", {
 
 router.get('/logout', (req, res) => {
     req.logout()
-    res.redirect(process.env.APP_URL)
 })
 
 
