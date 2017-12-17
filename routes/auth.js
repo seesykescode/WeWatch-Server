@@ -42,6 +42,7 @@ router.get("/callback", passport.authenticate("twitch", {
 
 router.get('/logout', (req, res) => {
     req.logout()
+    res.sendStatus(200)
 })
 
 
