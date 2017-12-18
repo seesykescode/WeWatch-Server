@@ -4,7 +4,7 @@ const
     passport = require("passport"),
     twitchStrat = require("passport-twitch").Strategy
     
-console.log(`${process.env.BASE_URL}/auth/callback`)
+
 // Passport configuration
     passport.use(new twitchStrat({
         clientID: process.env.TWITCH_CLIENT_ID,
@@ -42,7 +42,7 @@ router.get("/callback", passport.authenticate("twitch", {
 
 router.get('/logout', (req, res) => {
     req.logout()
-    res.sendStatus(200)
+    res.redirect(process.env.APP_URL)
 })
 
 
