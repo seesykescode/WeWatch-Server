@@ -30,5 +30,11 @@ router.get('/streams', (req, res) => {
     })
 })
 
+router.get('/streams/featured', (req, res) =>{
+    api.streams.live({limit: 20}, (err, apiResponse) => {
+        res.json(apiResponse.streams)
+    })
+})
+
 
 module.exports = router
