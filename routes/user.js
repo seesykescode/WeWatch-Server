@@ -24,6 +24,14 @@ router.get('/validate', (req, res) => {
     }
 })
 
+router.get('/search/:id', (req, res) => {
+    console.log(req.params.id)
+    api.users.usersByName({ users: req.params.id}, (err, apiResponse) => {
+        res.json(apiResponse.users)
+    })
+})
+
+
 router.get('/streams', (req, res) => {
     api.streams.followed({auth: req.user.accessToken}, (err, apiResponse) => {
         res.json(apiResponse.streams)
